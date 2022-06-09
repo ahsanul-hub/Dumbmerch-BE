@@ -2,7 +2,12 @@ const express = require("express");
 
 const router = express.Router();
 
-const { register, login, checkAuth } = require("../controllers/auth.js");
+const {
+  register,
+  login,
+  checkAuth,
+  getUsers,
+} = require("../controllers/auth.js");
 const {
   addProduct,
   getAllProducts,
@@ -38,6 +43,7 @@ const { uploadFile } = require("../middlewares/uploadFile");
 router.post("/register", register);
 router.post("/login", login);
 router.get("/check-auth", auth, checkAuth);
+router.get("/check-auth", getUsers);
 
 router.post("/product", auth, uploadFile("image"), addProduct);
 router.get("/products", getAllProducts);
