@@ -27,7 +27,7 @@ app.use("/uploads", express.static("uploads"));
 
 app.get("/", function (req, res) {
   res.send({
-    message: "Hello World",
+    message: "Hello",
     CLIENT_URL: process.env.CLIENT_URL,
   });
 });
