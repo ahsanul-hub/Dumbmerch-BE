@@ -167,7 +167,7 @@ exports.getUsers = async (req, res) => {
         },
       },
       attributes: {
-        exclude: ["password", "createdAt", "updatedAt"],
+        exclude: ["createdAt", "updatedAt"],
       },
     });
 
