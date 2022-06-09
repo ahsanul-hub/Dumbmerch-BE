@@ -26,4 +26,4 @@ app.use("/api/v1/", router);
 app.use("/uploads", express.static("uploads"));
 
 // app.listen(5000, () => console.log(`Listening on port 5000!`));
-server.listen(5000, () => console.log(`Listening on port 5000`));
+server.listen(port, () => console.log(`Listening on port 5000`));
