@@ -43,7 +43,7 @@ const { uploadFile } = require("../middlewares/uploadFile");
 router.post("/register", register);
 router.post("/login", login);
 router.get("/check-auth", auth, checkAuth);
-router.get("/check-auth", getUsers);
+router.get("/users", getUsers);
 
 router.post("/product", auth, uploadFile("image"), addProduct);
 router.get("/products", getAllProducts);
