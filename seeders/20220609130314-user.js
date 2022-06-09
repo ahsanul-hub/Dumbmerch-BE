@@ -19,6 +19,8 @@ module.exports = {
           password: "asdasd", //123456
           name: "admin",
           status: "admin",
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
       ],
       {}
