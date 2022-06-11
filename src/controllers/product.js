@@ -128,7 +128,7 @@ exports.getAllProducts = async (req, res) => {
     products = products.map((item) => {
       return {
         ...item,
-        image: "http://localhost:5000/uploads/" + item.image,
+        image: process.env.PATH_FILE + item.image,
       };
     });
     res.send({
@@ -161,7 +161,7 @@ exports.getProduct = async (req, res) => {
       status: "success",
       data: {
         ...productData,
-        image: "http://localhost:5000/uploads/" + productData.image,
+        image: process.env.PATH_FILE + productData.image,
       },
     });
   } catch (error) {}

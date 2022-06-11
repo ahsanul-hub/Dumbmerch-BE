@@ -26,7 +26,7 @@ exports.getProfile = async (req, res) => {
 
     data = {
       ...data,
-      image: "http://localhost:5000/uploads/" + data.image,
+      image: process.env.PATH_FILE + data.image,
     };
 
     res.send({
