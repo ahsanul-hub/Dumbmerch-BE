@@ -72,7 +72,7 @@ exports.getCart = async (req, res) => {
         ...item,
         product: {
           name: item.product.name,
-          image: "http://localhost:5000/uploads/" + item.product.image,
+          image: process.env.PATH_FILE + item.product.image,
           price: item.product.price,
         },
       };
