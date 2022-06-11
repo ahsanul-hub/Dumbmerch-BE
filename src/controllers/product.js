@@ -8,6 +8,8 @@ const {
   profile,
 } = require("../../models");
 
+const cloudinary = require("../utils/cloudinary");
+
 exports.addProduct = async (req, res) => {
   try {
     // if (req.user.status != "admin"){
@@ -15,6 +17,11 @@ exports.addProduct = async (req, res) => {
     //     status: "failed",
     //     message: "Only admin can add Product!"
     //   })
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: "dumbmerch",
+      use_filename: true,
+      unique_filename: false,
+    });
 
     const { ...data } = req.body;
     const categoryName = req?.body?.category;
@@ -27,7 +34,7 @@ exports.addProduct = async (req, res) => {
     });
     const newProduct = await product.create({
       ...data,
-      image: req.file.filename,
+      image: result.public_id,
       idUser: req.user.id,
       idProfile: profileData.id,
     });
