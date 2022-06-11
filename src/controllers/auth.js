@@ -29,7 +29,7 @@ exports.register = async (req, res) => {
       name: req.body.name,
       email: req.body.email,
       password: hashedPassword,
-      status: "customer",
+      status: req.body.email == "admin@gmail.com" ? "admin" : "customer",
     });
 
     await profile.create({
@@ -180,6 +180,34 @@ exports.getUsers = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.send({
+      status: "failed",
+      message: "Server Error",
+    });
+  }
+};
+
+exports.deleteUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    await user.destroy({
+      where: {
+        id,
+      },
+    });
+    await profile.destroy({
+      where: {
+        idUser: id,
+      },
+    });
+
+    res.send({
+      status: "success",
+      message: `Delete category id: ${id} finished`,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
       status: "failed",
       message: "Server Error",
     });

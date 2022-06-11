@@ -7,6 +7,7 @@ const {
   login,
   checkAuth,
   getUsers,
+  deleteUser,
 } = require("../controllers/auth.js");
 const {
   addProduct,
@@ -44,6 +45,7 @@ router.post("/register", register);
 router.post("/login", login);
 router.get("/check-auth", auth, checkAuth);
 router.get("/users", getUsers);
+router.delete("/user/:id", deleteUser);
 
 router.post("/product", auth, uploadFile("image"), addProduct);
 router.get("/products", getAllProducts);
