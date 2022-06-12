@@ -8,29 +8,29 @@ exports.addCart = async (req, res) => {
       qty: 1,
     };
 
-    const productExist = await cart.findOne({
-      where: {
-        idProduct: parseInt(req.body.idProduct),
-        idBuyer: req.user.id,
-      },
-      attributes: {
-        exclude: ["createdAt", "updatedAt"],
-      },
-    });
+    // const productExist = await cart.findOne({
+    //   where: {
+    //     idProduct: parseInt(req.body.idProduct),
+    //     idBuyer: req.user.id,
+    //   },
+    //   attributes: {
+    //     exclude: ["createdAt", "updatedAt"],
+    //   },
+    // });
 
-    if (productExist) {
-      const addQty = {
-        qty: productExist.qty + 1,
-      };
+    // if (productExist) {
+    //   const addQty = {
+    //     qty: productExist.qty + 1,
+    //   };
 
-      await cart.update(addQty, {
-        where: {
-          id: productExist.id,
-        },
-      });
-    } else {
-      await cart.create(data);
-    }
+    //   await cart.update(addQty, {
+    //     where: {
+    //       id: productExist.id,
+    //     },
+    //   });
+    // } else {
+    // }
+    await cart.create(data);
 
     res.send({
       status: "success",
