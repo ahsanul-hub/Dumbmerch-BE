@@ -243,7 +243,7 @@ exports.getTransactions = async (req, res) => {
         ...item,
         product: {
           ...item.product,
-          image: "http://localhost:5000/uploads/" + item.product.image,
+          image: process.env.PATH_FILE + item.product.image,
         },
       };
     });
