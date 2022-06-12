@@ -14,7 +14,7 @@ exports.addCart = async (req, res) => {
         idBuyer: req.user.id,
       },
       attributes: {
-        exclude: ["createdAt", "updatedAt", "idUser"],
+        exclude: ["createdAt", "updatedAt"],
       },
     });
 
