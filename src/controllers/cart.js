@@ -54,7 +54,7 @@ exports.getCart = async (req, res) => {
         idBuyer,
       },
       attributes: {
-        exclude: ["createdAt", "updatedAt", "idUser"],
+        exclude: ["createdAt", "updatedAt"],
       },
       include: [
         {
