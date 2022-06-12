@@ -10,7 +10,7 @@ exports.addCart = async (req, res) => {
 
     const productExist = await cart.findOne({
       where: {
-        idProduct: req.body.idProduct,
+        idProduct: parseInt(req.body.idProduct),
         idBuyer: req.user.id,
       },
       attributes: {
@@ -29,8 +29,8 @@ exports.addCart = async (req, res) => {
         },
       });
     } else {
+      await cart.create(data);
     }
-    await cart.create(data);
 
     res.send({
       status: "success",
