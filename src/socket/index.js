@@ -7,7 +7,7 @@ const connectedUser = {};
 
 const socketIo = (io) => {
   // code here
-  let userCount = 0;
+  // let userCount = 0;
 
   io.use((socket, next) => {
     if (socket.handshake.auth && socket.handshake.auth.token) {
@@ -18,9 +18,9 @@ const socketIo = (io) => {
   });
 
   io.on("connection", (socket) => {
-    userCount++;
+    // userCount++;
     console.log("id client connect:", socket.id);
-    console.log("client connect:", userCount);
+    // console.log("client connect:", userCount);
 
     const userId = socket.handshake.query.id;
     connectedUser[userId] = socket.id;
@@ -170,7 +170,7 @@ const socketIo = (io) => {
 
     socket.on("disconnect", () => {
       console.log("client disconnect");
-      userCount--;
+      // userCount--;
     });
   });
 };
