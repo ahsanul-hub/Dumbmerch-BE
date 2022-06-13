@@ -60,7 +60,7 @@ router.patch("/category/:id", updateCategory);
 router.delete("/category/:id", auth, deleteCategory);
 
 router.post("/transaction/:id", auth, addTransaction);
-router.post("/transaction", auth, addTransaction);
+router.post("/transaction", auth, addTransactionCart);
 router.get("/transactions", auth, getTransactions);
 router.delete("/transaction/:id", auth, deleteTransaction);
 
