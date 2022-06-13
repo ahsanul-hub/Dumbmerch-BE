@@ -18,8 +18,8 @@ exports.addTransaction = async (req, res) => {
     data = {
       idSeller: productData.idUser,
       idBuyer: req.user.id,
-      idProduct: productData.id == null ? req.body.id : productData.id,
-      price: req.body.price == null ? productData.price : req.body.price,
+      idProduct: productData.id,
+      price: productData.price,
       qty: req.body.qty == null ? 1 : req.body.qty,
       status: "pending",
     };
