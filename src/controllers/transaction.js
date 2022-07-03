@@ -72,7 +72,7 @@ exports.addTransaction = async (req, res) => {
       status: "pending",
       message: "Pending transaction payment gateway",
       payment,
-      body: req.body,
+      body: req.body, // delete if done
       id: datatransaction.id,
       product: {
         id: data.idProduct,
@@ -83,6 +83,7 @@ exports.addTransaction = async (req, res) => {
     res.send({
       status: "failed",
       message: "Server Error",
+      body: req.body, // delete if done
     });
   }
 };
