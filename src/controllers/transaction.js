@@ -3,7 +3,7 @@ const midtransClient = require("midtrans-client");
 
 exports.addTransaction = async (req, res) => {
   try {
-    const idProduct = req.params ? req.params : req.body.id;
+    const idProduct = req.params == null ? req.params : req.body.id;
     let productData = await product.findOne({
       where: {
         id: idProduct.id,
@@ -19,8 +19,8 @@ exports.addTransaction = async (req, res) => {
       idSeller: productData.idUser,
       idBuyer: req.user.id,
       idProduct: productData.id,
-      price: req.body.price ? req.body.price : productData.price,
-      qty: req.body.qty ? 1 : req.body.qty,
+      price: req.body.price == null ? req.body.price : productData.price,
+      qty: req.body.qty == null ? 1 : req.body.qty,
       status: "pending",
     };
 
